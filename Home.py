@@ -395,7 +395,7 @@ with tab1:
         <div class="stat-box">
             <div class="stat-label">Locations Covered</div>
             <div class="stat-number">50+</div>
-            <div class="stat-label">Across India</div>
+            <div class="stat-label">Across Pakistan</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -442,7 +442,7 @@ with tab1:
         <div class="footer-section">
             <h2>RealEstatePro © 2024</h2>
             <p>Transforming Real Estate with AI & Machine Learning</p>
-            <p style="color: #d4af37;">📧 contact@realestatepro.com | 📱 +91-XXXXXXXXXX</p>
+            <p style="color: #d4af37;">📧 contact@realestatepro.com | 📱 +92-XXXXXXXXXX</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -722,12 +722,12 @@ with tab3:
         if property_type == 'house':
             fig1 = px.scatter(new_df[new_df['property_type'] == 'house'], x="area", y="price_in_crore", color="bedRoom",
                               title="Area Vs Price - Houses",
-                              labels={"area": "Area (sq ft)", "price_in_crore": "Price (Crore ₹)"})
+                              labels={"area": "Area (sq ft)", "price_in_crore": "Price (PKR Crore)"})
             st.plotly_chart(fig1, use_container_width=True)
         else:
             fig1 = px.scatter(new_df[new_df['property_type'] == 'flat'], x="area", y="price_in_crore", color="bedRoom",
                               title="Area Vs Price - Flats",
-                              labels={"area": "Area (sq ft)", "price_in_crore": "Price (Crore ₹)"})
+                              labels={"area": "Area (sq ft)", "price_in_crore": "Price (PKR Crore)"})
             st.plotly_chart(fig1, use_container_width=True)
 
         # BHK Pie Chart
@@ -751,7 +751,7 @@ with tab3:
 
         fig3 = px.box(new_df[new_df['bedRoom'] <= 4], x='bedRoom', y='price_in_crore',
                       title='Price Range by Number of Bedrooms',
-                      labels={"bedRoom": "Number of Bedrooms", "price_in_crore": "Price (Crore ₹)"})
+                      labels={"bedRoom": "Number of Bedrooms", "price_in_crore": "Price (PKR Crore)"})
 
         st.plotly_chart(fig3, use_container_width=True)
 
@@ -761,6 +761,8 @@ with tab3:
         fig4 = plt.figure(figsize=(12, 5))
         sns.histplot(new_df[new_df['property_type'] == 'house']['price_in_crore'], kde=True, label='house')
         sns.histplot(new_df[new_df['property_type'] == 'flat']['price_in_crore'], kde=True, label='flat')
+        plt.ylabel('Price (PKR Crore)')
+        plt.xlabel('Price')
         plt.legend()
         st.pyplot(fig4)
 
@@ -870,5 +872,3 @@ with tab4:
     else:
         st.error(
             "⚠️ Recommendation files not found. Please ensure location_distance.pkl and cosine_sim files are available.")
-
-
