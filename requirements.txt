@@ -9,3 +9,5 @@ shap
 matplotlib
 
 scikit-learn
+
+plotly
